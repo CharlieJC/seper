@@ -22,7 +22,8 @@
     "url": "https://github.com/CharlieJC/seper/issues"
   },
   "homepage": "https://github.com/CharlieJC/seper#readme",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "concurrently": "^6.2.1"
   }
 }
