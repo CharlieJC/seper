@@ -1,6 +1,7 @@
 const express = require('express');
+const cors = require('cors');
+const path = require('path');
 const connectDB = require('./config/db');
-var cors = require('cors');
 // routes
 const articles = require('./routes/api/articles');
 
@@ -12,7 +13,7 @@ connectDB();
 // cors
 app.use(cors({ origin: true, credentials: true }));
 
-//middleware
+// middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -24,11 +25,10 @@ app.listen(port, () => console.log(`Server running on port ${port}`));
 app.use('/api/articles', articles);
 
 // Accessing the path module
-const path = require("path");
 
 // Step 1:
-app.use(express.static(path.resolve(__dirname, "../frontend/build")));
+app.use(express.static(path.resolve(__dirname, '../frontend/build')));
 // Step 2:
-app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "../frontend/build", "index.html"));
+app.get('*', (request, response) => {
+  response.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
 });
