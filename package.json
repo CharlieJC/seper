@@ -10,7 +10,9 @@
     "heroku-postbuild": "npm run install-server && npm run install-client && npm run build",
     "develop": "concurrently --kill-others-on-fail \"npm run start --prefix backend\" \"npm run start --prefix frontend\"",
     "start": "concurrently --kill-others-on-fail \"npm run start --prefix backend\" \"npm run start --prefix frontend\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint './src/**/*.{js,jsx}'",
+    "lint:fix": "eslint './src/**/*.{js,jsx}' --fix"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,18 @@
     "url": "https://github.com/CharlieJC/seper/issues"
   },
   "homepage": "https://github.com/CharlieJC/seper#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.25.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.4.0"
+  },
   "dependencies": {
     "concurrently": "^6.2.1"
   }
