@@ -1,26 +1,39 @@
+import { Dropdown } from "./Dropdown"
+
 const tablecolumns = [
     {
       Header: 'Title',
-      accessor: 'title'
+      accessor: 'title',
+      Filter: false
     }, {
       Header: 'Authors',
-      accessor: 'authors'
+      accessor: 'authors',
+      Filter: false
     }, {
       Header: 'Source',
-      accessor: 'source'
+      accessor: 'source',
+      Filter: false
     }, {
       Header: 'Pub. Year',
-      accessor: 'pubyear'
+      accessor: 'pubyear',
+      Filter: false
     },{
       Header: 'DOI',
-      accessor: 'doi'
+      accessor: 'doi',
+      Filter: false
     },,{
       Header: 'Claimed Benefit',
-      accessor: 'claim'
+      accessor: 'claim',
+      Filter: false
     },{
       Header: 'Level of Evidence',
-      accessor: 'evidence'
+      accessor: 'evidence',
+      Filter: false
+    },{
+      Header: 'Practice',
+      accessor: 'practice',
+      Filter: Dropdown
     }
   ]
 
-module.exports = tablecolumns
+export default tablecolumns;
