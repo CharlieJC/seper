@@ -72,7 +72,7 @@ const articles = [
     source: 'IEEE Software, 23(6), 70–71.',
     pubyear: '2006',
     doi: 'https://doi.org/10.1109/ms.2006.157',
-    claim: 'Code Quality Improvement',
+    claim: 'Code quality improvement',
     evidence: 'Strong Support',
     practice: 'TDD',
   },

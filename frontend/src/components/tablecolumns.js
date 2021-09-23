@@ -20,19 +20,23 @@ const tablecolumns = [
     },{
       Header: 'DOI',
       accessor: 'doi',
-      Filter: false
+      Filter: false,
+      disableSortBy: true
     },,{
       Header: 'Claimed Benefit',
       accessor: 'claim',
-      Filter: false
+      Filter: Dropdown,
+      disableSortBy: true
     },{
       Header: 'Level of Evidence',
       accessor: 'evidence',
-      Filter: false
+      Filter: Dropdown,
+      disableSortBy: true
     },{
       Header: 'Practice',
       accessor: 'practice',
-      Filter: Dropdown
+      Filter: Dropdown,
+      disableSortBy: true
     }
   ]
 

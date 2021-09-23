@@ -40,19 +40,16 @@ const {
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                // Add the sorting props to control sorting. For this example
-                // we can add them into the header props
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render('Header')}
                   <div>{column.canFilter ? column.render('Filter') : null}</div>
-                  {/* Add a sort direction indicator */}
-                {/* <span>
+                <span>
                     {column.isSorted
                       ? column.isSortedDesc
                         ? ' 🔽'
                         : ' 🔼'
                       : ''}
-                  </span> */}
+                  </span>
                 </th>
               ))}
             </tr>
