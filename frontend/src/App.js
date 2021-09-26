@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  Route,
+  NavLink,
+  BrowserRouter as Router,
+} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import SEPractice from "./pages/SE-Practice"
+import submissionPage from "./pages/submit"
+
+const App = () =>  {
+    return (
+        <Router>
+        <div>
+          <h1 className="text-center">Software Engineering Practice Evidence Repository (SEPER)</h1>
+            <ul className="header">
+                <li><NavLink to = "/SEPractice">Select the Practice</NavLink></li>
+                <li><NavLink to = "/submit">Submit a Practice</NavLink></li>
+
+            </ul>
+          <div className="content">
+            <Route  path="/SEPractice" component={SEPractice}/>
+            <Route  path="/submit" component={submissionPage}/>
+          </div>
+        </div>
+        </Router>
+    );
 }
-
 export default App;

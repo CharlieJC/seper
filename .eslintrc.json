@@ -5,6 +5,7 @@
     },
     "extends": [
         "plugin:react/recommended",
+        "plugin:cypress/recommended",
         "airbnb"
     ],
     "parserOptions": {
@@ -15,10 +16,15 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react", 
+        "cypress"
     ],
     "rules": {
         "linebreak-style":0,
-        "no-console": "off"
+        "no-console": "off",
+        "jest/expect-expect": "off"
+    },
+    "globals": {
+        "cy": true
     }
 }
