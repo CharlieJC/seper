@@ -1,5 +1,5 @@
 import React, {useMemo} from "react";
-import { useTable, useSortBy, usePagination } from 'react-table';
+import { useTable, useSortBy, usePagination, useFilters } from 'react-table';
 
 const Table = ({columns, data}) => {
 const {
@@ -27,7 +27,7 @@ const {
       data,
       initialState: { pageIndex: 0 },
     },
-    
+    useFilters,
     useSortBy,
     usePagination
   )
@@ -40,12 +40,10 @@ const {
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                // Add the sorting props to control sorting. For this example
-                // we can add them into the header props
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render('Header')}
-                  {/* Add a sort direction indicator */}
-                  <span>
+                  <div>{column.canFilter ? column.render('Filter') : null}</div>
+                <span>
                     {column.isSorted
                       ? column.isSortedDesc
                         ? ' 🔽'
