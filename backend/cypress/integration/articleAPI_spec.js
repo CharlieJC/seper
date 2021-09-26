@@ -15,7 +15,7 @@ describe('Articles', () => {
       it('should pass article details to the server', () => {
         cy.request({
           method: 'POST',
-          url: 'http://localhost:8082/api/articles',
+          url: '/api/articles',
           body: {
             Title: 'test',
             Authors: 'test',

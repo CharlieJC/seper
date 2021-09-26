@@ -15,7 +15,7 @@ const SubmissionForm = () => {
   });
 
   const onSubmit = () => {
-    axios.post('http://localhost:8082/api/articles', state).catch((err) => {
+    axios.post('/api/articles', state).catch((err) => {
       console.log('Error in SubmissionForm!');
     });
   };
