@@ -14,7 +14,7 @@ class SEPractice extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:8082/api/practices')
+      .get('/api/practices')
       .then(res => {
         this.setState({
           articles: res.data
