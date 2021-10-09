@@ -15,10 +15,19 @@ import registerPage from "./pages/register"
 const App = () =>  {
   const history = useHistory()
   const [username, setUsername] = useState(null)
+  const [role, setRole] = useState(null)
+
 
   async function logout() {
     localStorage.removeItem("token")
     await history.push("/")
+  }
+
+  const setUserInfo = (data) => {
+    setUsername(data.username)
+    setRole(data.role)
+    console.log(username)
+    console.log(role)
   }
 
   useEffect(() => {
@@ -28,7 +37,7 @@ const App = () =>  {
         }
     })
     .then(res => res.json())
-    .then(data => data.isLoggedIn ? setUsername(data.username): null)
+    .then(data => data.isLoggedIn ? setUserInfo(data): null)
 })
     return (
         <Router>
@@ -36,7 +45,7 @@ const App = () =>  {
           <h1 className="text-center">Software Engineering Practice Evidence Repository (SEPER)</h1>
           
             <ul className="header">
-                {username ? <span>Logged in as {username} <a href="/" onClick={logout}>Logout</a></span> : null}
+                {(username, role) ? <span>Logged in, username: {username} role: {role} <a href="/" onClick={logout}>Logout</a></span> : null}
                 <li><NavLink to = "/SEPractice">Select the Practice</NavLink></li>
                 <li><NavLink to = "/submit">Submit a Practice</NavLink></li>
                 <li><NavLink to = "/guide">User Guide</NavLink></li>

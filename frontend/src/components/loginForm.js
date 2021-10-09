@@ -46,7 +46,7 @@ function handleLogin(e) {
           <input required placeholder="Username" type="text" />
         </p>
         <p>
-          <input  prequired placeholder="Password" type="text" />
+          <input  prequired placeholder="Password" type="password" />
         </p>
         <p>
           <input type="submit" />

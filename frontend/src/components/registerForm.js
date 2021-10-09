@@ -13,10 +13,8 @@ function handleRegister(e) {
   const user = {
       username: form[0].value,
       password: form[1].value,
-      role: "visitor"
+      role: form[2].value
   }
-
-  console.log(form[2].value + " THIS IS THE VALUE")
 
   fetch("api/register", {
       method: "POST",
@@ -41,10 +39,10 @@ function handleRegister(e) {
     <div>
       <form onSubmit={event => handleRegister(event)}>
         <p>
-          <input placeholder="Title" type="text"/>
+          <input placeholder="Username" type="text"/>
         </p>
         <p>
-          <input placeholder="Authors" type="text" />
+          <input placeholder="Password" type="password" />
         </p>
 
         <p>

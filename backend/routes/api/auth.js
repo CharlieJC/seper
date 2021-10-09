@@ -26,6 +26,7 @@ router.post('/login', (req, res) => {
             const payload = {
               id: dbUser._id,
               username: dbUser.username,
+              role: dbUser.role,
             };
             jwt.sign(
               payload,
@@ -64,7 +65,7 @@ router.post('/register', async (req, res) => {
     const dbUser = new User({
       username: user.username.toLowerCase(),
       password: user.password,
-      role: req.body.role.toLowerCase(),
+      role: user.role.toLowerCase(),
     });
 
     dbUser.save();
@@ -85,6 +86,7 @@ function verifyJWT(req, res, next) {
       req.user = {};
       req.user.id = decoded.id;
       req.user.username = decoded.username;
+      req.user.role = decoded.role;
       next();
     });
   } else {
@@ -106,5 +108,5 @@ router.get('/Users', (req, res) => {
     .catch(() => res.status(404).json({ message: 'No Users found' }));
 });
 
-router.get('/isUserAuth', verifyJWT, (req, res) => res.json({ isLoggedIn: true, username: req.user.username }));
+router.get('/isUserAuth', verifyJWT, (req, res) => res.json({ isLoggedIn: true, username: req.user.username, role: req.user.role }));
 module.exports = router;
