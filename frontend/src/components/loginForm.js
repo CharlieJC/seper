@@ -25,8 +25,10 @@ function handleLogin(e) {
     .then(res => res.json())
     .then(data => {
         localStorage.setItem("token", data.token)
+        history.push("/")
     })
     }
+    
     useEffect(() => {
         fetch("/api/isUserAuth", {
             headers: {
@@ -34,7 +36,7 @@ function handleLogin(e) {
             }
         })
         .then(res => res.json())
-        .then(data => data.isLoggedIn ? history.pushState("/"):null)
+        .then(data => data.isLoggedIn ? history.push("/"):null)
     })
 
   return (

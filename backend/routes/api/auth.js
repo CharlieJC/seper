@@ -74,7 +74,6 @@ router.post('/register', async (req, res) => {
 
 function verifyJWT(req, res, next) {
   const token = req.headers['x-access-token']?.split(' ')[1];
-  console.log(token);
   if (token) {
     jwt.verify(token, process.env.PASSPORTSECRET, (err, decoded) => {
       if (err) {

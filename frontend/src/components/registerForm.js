@@ -6,7 +6,7 @@ const RegisterForm = () => {
   const history = useHistory()
 
 
-function handleLogin(e) {
+function handleRegister(e) {
   e.preventDefault()
 
   const form = e.target;
@@ -34,12 +34,12 @@ function handleLogin(e) {
           }
       })
       .then(res => res.json())
-      .then(data => data.isLoggedIn ? history.pushState("/"): null)
+      .then(data => data.isLoggedIn ? history.push("/"): null)
   })
 
   return (
     <div>
-      <form onSubmit={event => handleLogin(event)}>
+      <form onSubmit={event => handleRegister(event)}>
         <p>
           <input placeholder="Title" type="text"/>
         </p>
