@@ -1,33 +1,50 @@
-import { useForm } from 'react-hook-form';
-import React, { useState } from 'react';
+import {useHistory} from 'react-router';
+import React, { useEffect } from 'react';
 
 const LoginForm = () => {
-  const { register, handleSubmit } = useForm();
-  const [state, setState] = useState({
-    username: '',
-    password: '',
-  });
 
-  const onSubmit = () => {
-    
-  };
+const history = useHistory()
 
-  const onChange = (value, key) => {
-    setState({
-      ...state,
-      [key]: value,
+  
+function handleLogin(e) {
+    e.preventDefault()
+
+    const form = e.target;
+    const user = {
+        username: form[0].value,
+        password: form[1].value
+    }
+
+    fetch("api/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
     })
-    console.log(state)
-  };
+    .then(res => res.json())
+    .then(data => {
+        localStorage.setItem("token", data.token)
+    })
+    }
+    useEffect(() => {
+        fetch("/api/isUserAuth", {
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            }
+        })
+        .then(res => res.json())
+        .then(data => data.isLoggedIn ? history.pushState("/"):null)
+    })
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={event => handleLogin(event)}>
         <p>
-          <input {...register('Username')} placeholder="Title" type="text" value={state.Title} onChange={e => onChange(e.target.value, 'Title')} />
+          <input required placeholder="Username" type="text" />
         </p>
         <p>
-          <input {...register('Password')} placeholder="Authors" type="text" value={state.Authors} onChange={e => onChange(e.target.value, 'Authors')} />
+          <input  prequired placeholder="Password" type="text" />
         </p>
         <p>
           <input type="submit" />
