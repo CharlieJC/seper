@@ -50,7 +50,7 @@ function handleRegister(e) {
             <option value="Visitor">Select your role...</option>
             <option value="Visitor">Visitor</option>
             <option value="Moderator">Moderator</option>
-            <option value="Analyst">Moderator</option>
+            <option value="Analyst">Analyst</option>
             <option value="Administator">Administator</option>
           </select>
         </p>

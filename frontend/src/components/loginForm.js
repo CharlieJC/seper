@@ -26,6 +26,7 @@ function handleLogin(e) {
     .then(data => {
         localStorage.setItem("token", data.token)
         history.push("/")
+        window.location.reload();
     })
     }
     
