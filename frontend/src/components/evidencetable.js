@@ -21,6 +21,8 @@ const {
     previousPage,
     setPageSize,
     state: { pageIndex, pageSize },
+    allColumns,
+    getToggleHideAllColumnsProps, 
   } = useTable(
     {
       columns,
@@ -35,6 +37,16 @@ const {
   // Render Data Table UI
   return (
     <>
+    {
+      allColumns.map(column => (
+        <div key={column.id}>
+          <label>
+            <input type='checkbox' {...column.getToggleHiddenProps()} />
+            {column.Header}
+          </label>
+        </div>
+      ))
+    }
       <table {...getTableProps()} className="table">
         <thead>
           {headerGroups.map(headerGroup => (

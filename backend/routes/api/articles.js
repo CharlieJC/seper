@@ -17,7 +17,7 @@ router.get('/test', (req, res) => res.send('article api route testing!'));
 router.get('/articles', (req, res) => {
   Article.find()
     .then((articles) => res.json(articles))
-    .catch((err) => res.status(404).json({ nobooksfound: 'No Articles found' }));
+    .catch(() => res.status(404).json({ nobooksfound: 'No Articles found' }));
 });
 
 // @route POST api/articles
@@ -26,7 +26,7 @@ router.get('/articles', (req, res) => {
 router.post('/articles', (req, res) => {
   Article.create(req.body)
     .then((articles) => res.json(articles))
-    .catch((err) => res.status(400).json({ error: 'Unable to add this article' }));
+    .catch(() => res.status(400).json({ error: 'Unable to add this article' }));
 });
 
 // @route GET api/practices
